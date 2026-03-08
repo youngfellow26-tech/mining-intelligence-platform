@@ -1,0 +1,12 @@
+
+from fastapi import FastAPI
+import random
+
+app = FastAPI()
+
+@app.get("/predict")
+def predict():
+ return {
+  "failure_probability": round(random.random(),2),
+  "component":"hydraulic pump"
+ }

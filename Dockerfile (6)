@@ -1,0 +1,12 @@
+
+from fastapi import FastAPI
+
+app = FastAPI()
+
+@app.get("/plans")
+def plans():
+ return [
+  {"name":"starter","price":500},
+  {"name":"professional","price":5000},
+  {"name":"enterprise","price":20000}
+ ]

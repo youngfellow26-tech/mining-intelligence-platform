@@ -1,0 +1,18 @@
+
+from kafka import KafkaProducer
+import json, time, random
+
+producer = KafkaProducer(
+ bootstrap_servers='kafka:9092',
+ value_serializer=lambda v: json.dumps(v).encode('utf-8')
+)
+
+while True:
+ data = {
+  "equipment":"TRUCK-201",
+  "temperature":random.uniform(70,100),
+  "vibration":random.uniform(0.1,1.2)
+ }
+ producer.send("telemetry",data)
+ print("sent telemetry")
+ time.sleep(3)
