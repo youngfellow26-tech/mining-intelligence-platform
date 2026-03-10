@@ -1,6 +1,7 @@
+from fastapi import FastAPI
 
-FROM python:3.10
-WORKDIR /app
-COPY producer.py .
-RUN pip install kafka-python
-CMD ["python","producer.py"]
+app = FastAPI()
+
+@app.get("/")
+def home():
+    return {"status": "Mining Intelligence Platform Running"}
